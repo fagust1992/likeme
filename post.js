@@ -17,11 +17,13 @@ const getDate = async () => {
 const agregarPost = async (titulo, Imagen, descripcion) => {
   // funcion  que ejecuta la consulta sql
   const consulta = "INSERT INTO posts VALUES (DEFAULT, $1, $2, $3)";
-  const values = [titulo, Imagen, descripcion];
 
-  const result = await pool.query(consulta, values);
-  console.log(result);
-  return result;
+  if ((titulo != "") & (Imagen != "") & (descripcion != "")) {
+    const values = [titulo, Imagen, descripcion];
+    const result = await pool.query(consulta, values);
+    console.log(result);
+    return result;
+  }
 };
 
 const obtenerPost = async () => {

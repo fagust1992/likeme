@@ -28,6 +28,7 @@ app.get("/posts", async (request, response) => {
 app.post("/posts", async (request, response) => {
   try {
     const { titulo, imagen, descripcion } = request.body;
+
     await agregarPost(titulo, imagen, descripcion);
     response.send("Post agregado");
   } catch (error) {
