@@ -21,7 +21,7 @@ app.get("/posts", async (request, response) => {
     const Posts = await obtenerPost();
     response.json(Posts);
   } catch (error) {
-    res.status(500).send(error);
+    response.status(500).send(error);
   }
 });
 
@@ -31,7 +31,7 @@ app.post("/posts", async (request, response) => {
     await agregarPost(titulo, imagen, descripcion);
     response.send("Post agregado");
   } catch (error) {
-    res.status(500).send(error);
+    response.status(500).send(error);
   }
 });
 
