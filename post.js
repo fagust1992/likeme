@@ -28,8 +28,10 @@ const agregarPost = async (titulo, Imagen, descripcion) => {
 
 const obtenerPost = async () => {
   const { rows } = await pool.query("SELECT * FROM posts");
-  console.log(rows);
-  return rows;
+  if (rows.length > 0) {
+    console.log(rows);
+    return rows;
+  }
 };
 
 obtenerPost();
